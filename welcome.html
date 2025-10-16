@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday — My Love ❤️</title>
+  <style>
+    :root{
+      --bg:#1b2941;
+      --card:#0b1220;
+      --accent:#ff3860;
+      --text:#f8fafc;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,59,90,0.06), transparent),
+                  radial-gradient(900px 500px at 90% 90%, rgba(88,67,255,0.04), transparent),
+                  var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1.5rem;
+    }
+
+    .card{
+      width:min(840px,95vw);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;
+      padding:28px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(8px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .left{flex:1;min-width:0;}
+    .right{width:240px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+
+    h1{
+      font-size:clamp(26px,6vw,44px);
+      line-height:1.1;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      font-size:clamp(15px,3.2vw,18px);
+      opacity:0.9;
+      margin-bottom:12px;
+    }
+
+    .greeting{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .heart{
+      font-size:42px;
+      transform-origin:center center;
+      display:inline-block;
+      filter:drop-shadow(0 6px 18px rgba(255,56,96,0.25));
+      animation:beat 1s infinite cubic-bezier(.2,.9,.3,1);
+    }
+
+    @keyframes beat{
+      0%{transform:scale(1)}
+      25%{transform:scale(1.12)}
+      40%{transform:scale(0.98)}
+      60%{transform:scale(1.06)}
+      100%{transform:scale(1)}
+    }
+
+    .message{
+      font-size:clamp(15px,3.8vw,20px);
+      margin-top:10px;
+      line-height:1.5;
+      opacity:0.95;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      margin-top:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:12px 20px;
+      border-radius:10px;
+      color:var(--text);
+      cursor:pointer;
+      backdrop-filter:blur(6px);
+      font-size:16px;
+    }
+    .btn:active{transform:translateY(1px)}
+
+    .heart-card{
+      width:100%;
+      padding:16px;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .big-heart{
+      font-size:72px;
+      animation:beat 1s infinite cubic-bezier(.2,.9,.3,1);
+    }
+    .note{font-size:13px;opacity:0.8;text-align:center;}
+
+    canvas.confetti{
+      position:absolute;
+      left:0;top:0;width:100%;height:100%;
+      pointer-events:none;
+    }
+
+    footer{
+      margin-top:18px;
+      font-size:12px;
+      opacity:0.7;
+      text-align:center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width:720px){
+      .row{flex-direction:column;align-items:center;text-align:center;}
+      .right{width:100%;margin-top:16px;}
+      .card{padding:22px;}
+      .controls{justify-content:center;}
+    }
+
+    @media (max-width:400px){
+      .heart{font-size:36px;}
+      .big-heart{font-size:60px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="article" aria-label="Birthday greeting">
+      <canvas class="confetti" id="confettiCanvas"></canvas>
+      <div class="row">
+        <div class="left">
+          <h1>
+            <span class="greeting">
+              <span class="word delay-1">Happy</span>
+              <span class="word delay-2">birthday</span>
+              <span class="word delay-3">my</span>
+              <span class="word delay-4">love</span>
+              <span class="heart" id="heartEmoji" aria-hidden="true">❤️</span>
+            </span>
+          </h1>
+          <p class="subtitle">Wishing you a day full of love, laughter and little surprises ✨</p>
+          <p class="message">May your year ahead be as warm and bright as your smile.</p>
+
+          <div class="controls">
+            <a href="index2.html" id="delayed-link">
+              <button class="btn" id="confettiBtn">Click Here</button>
+            </a>
+          </div>
+
+          <footer>❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</footer>
+        </div>
+
+        <div class="right">
+          <div class="heart-card">
+            <div class="big-heart" id="bigHeart">❤️</div>
+            <div class="note">This heart beats to say: I love you.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple confetti engine
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = canvas.offsetWidth;
+    let H = canvas.height = canvas.offsetHeight;
+
+    window.addEventListener('resize', ()=>{
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    });
+
+    function rand(min,max){ return Math.random()*(max-min)+min }
+
+    class Particle{
+      constructor(){ this.reset(); }
+      reset(){
+        this.x = rand(0,W);
+        this.y = rand(-20, -80);
+        this.vx = rand(-1.5,1.5);
+        this.vy = rand(2,6);
+        this.size = rand(5,10);
+        this.rotation = rand(0,Math.PI*2);
+        this.spin = rand(-0.15,0.15);
+        this.color = `hsl(${Math.floor(rand(0,360))} 90% 60%)`;
+        this.alpha = 1;
+      }
+      update(){
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy *= 1.01;
+        this.rotation += this.spin;
+        if(this.y > H + 40) this.reset();
+      }
+      draw(ctx){
+        ctx.save();
+        ctx.translate(this.x,this.y);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size/2,-this.size/2,this.size,this.size*0.6);
+        ctx.restore();
+      }
+    }
+
+    const particles = [];
+    function spawn(n=40){ for(let i=0;i<n;i++) particles.push(new Particle()); }
+    function clearParticles(){ particles.length = 0; }
+
+    let running = false;
+    function loop(){
+      ctx.clearRect(0,0,W,H);
+      for(let p of particles){ p.update(); p.draw(ctx); }
+      if(running) requestAnimationFrame(loop);
+    }
+
+    // Confetti button
+    const confettiBtn = document.getElementById('confettiBtn');
+    confettiBtn.addEventListener('click', ()=>{
+      clearParticles(); spawn(80); running=true; loop();
+      setTimeout(()=>{ running=false; }, 4000);
+    });
+
+    // Delay navigation
+    document.getElementById('delayed-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      const link = this.href;
+      setTimeout(()=>{ window.location.href = link; }, 2000);
+    });
+
+    // Keyboard shortcut (Space)
+    window.addEventListener('keydown', (e)=>{
+      if(e.code==='Space'){ e.preventDefault(); confettiBtn.click(); }
+    });
+  </script>
+</body>
+</html>
